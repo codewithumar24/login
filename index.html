@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+        
+        body {
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, #71b7e6, #9b59b6);
+        }
+        
+        .container {
+            width: 400px;
+            background-color: white;
+            border-radius: 15px;
+            padding: 25px 30px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        h2 {
+            text-align: center;
+            margin-bottom: 30px;
+            font-weight: 600;
+            color: #333;
+            position: relative;
+        }
+        
+        h2::before {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 50px;
+            height: 3px;
+            background: linear-gradient(135deg, #71b7e6, #9b59b6);
+            border-radius: 3px;
+        }
+        
+        .input-group {
+            position: relative;
+            margin-bottom: 25px;
+        }
+        
+        .input-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-size: 16px;
+            color: #555;
+        }
+        
+        .input-group input {
+            height: 45px;
+            width: 100%;
+            padding: 0 40px 0 40px;
+            border-radius: 8px;
+            border: 1px solid #ddd;
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+        
+        .input-group input:focus {
+            border-color: #9b59b6;
+            box-shadow: 0 0 0 2px rgba(155, 89, 182, 0.2);
+            outline: none;
+        }
+        
+        .input-group i.bx-user {
+            position: absolute;
+            left: 15px;
+            top: 40px;
+            color: #888;
+            font-size: 18px;
+        }
+        .input-group i.bx-lock{
+            position: absolute;
+            left: 15px;
+            top: 12px;
+            color: #888;
+            font-size: 18px;
+        }
+        
+        /* Password toggle styles */
+        .password-wrapper {
+            position: relative;
+        }
+        
+        .toggle-password {
+            position: absolute;
+            right: 12px;
+            top: 10px;
+            cursor: pointer;
+            color: #888;
+            font-size: 18px;
+            background: transparent;
+            border: none;
+            padding: 5px;
+        }
+        
+        #password {
+            padding-right: 45px;
+        }
+        
+        #togglePassword {
+            display: none;
+        }
+        
+        #togglePassword:checked ~ .password-wrapper .password-input {
+            -webkit-text-security: none;
+        }
+        
+        #togglePassword:checked ~ .password-wrapper .toggle-password .show-icon {
+            display: none;
+        }
+        
+        #togglePassword:checked ~ .password-wrapper .toggle-password .hide-icon {
+            display: block;
+        }
+        
+        .hide-icon {
+            display: none;
+        }
+        
+        .options {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+            font-size: 14px;
+        }
+        
+        .options a {
+            color: #9b59b6;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .options a:hover {
+            color: #71b7e6;
+            text-decoration: underline;
+        }
+        
+        .button {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        
+        .button a {
+            display: inline-block;
+            padding: 12px 0;
+            width: 100%;
+            background: linear-gradient(135deg, #71b7e6, #9b59b6);
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .button a:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+        }
+        
+        .register-link {
+            text-align: center;
+            color: #555;
+            font-size: 14px;
+        }
+        
+        .register-link a {
+            color: #9b59b6;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .register-link a:hover {
+            color: #71b7e6;
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Login Your Account</h2>
+        
+        <div class="input-group">
+            <label for="email">Email</label>
+            <input type="email" name="email" id="email" placeholder="Enter your email">
+            <i class='bx bx-user'></i>
+        </div>
+        
+        <input type="checkbox" id="togglePassword" style="display: none;">
+        <div class="input-group">
+            <label for="password">Password</label>
+            <div class="password-wrapper">
+                <input type="password" name="password" id="password" class="password-input" placeholder="Enter your password">
+                <i class='bx bx-lock'></i>
+                <label for="togglePassword" class="toggle-password">
+                    <i class='bx bx-show show-icon' id="show"></i>
+                    <i class='bx bx-hide hide-icon' id="hide"></i>
+                </label>
+            </div>
+        </div>
+        
+        <div class="options">
+            <div>
+                <input type="checkbox" id="remember">
+                <label for="remember">Remember me</label>
+            </div>
+            <a href="#">Forgot Password?</a>
+        </div>
+        
+        <div class="button">
+            <a href="#">Login</a>
+        </div>
+        
+        <div class="register-link">
+            Don't have an account? <a href="#">Register</a>
+        </div>
+    </div>
+
+    <script>
+        const passwordInput = document.getElementById("password");
+        const showIcon = document.getElementById("show");
+        const hideIcon = document.getElementById("hide");
+    
+        showIcon.addEventListener("click", function () {
+            passwordInput.type = "text";
+            showIcon.style.display = "none";
+            hideIcon.style.display = "inline";
+        });
+    
+        hideIcon.addEventListener("click", function () {
+            passwordInput.type = "password";
+            hideIcon.style.display = "none";
+            showIcon.style.display = "inline";
+        });
+    </script>
+
+</body>
+</html>
